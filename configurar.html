@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Karma</title>
+		<link href="css/estilos.css" rel="stylesheet">
+		 <meta name="viewport" id="viewport"
+     content="width=device-width, height=device-height,
+     initial-scale=1.0, maximum-scale=1.0,
+     user-scalable=no" />
+		<script src="phonegap.js"></script>
+	</head>
+	<body>
+		<div class="navbar">
+			<img src ="img/home.png" class="logo" id="home">
+			<img src ="img/gear.png" class="icono" id="settings">
+			<img src ="img/user.png" class="icono" id="myfeed">	
+		</div>
+		<br><br><br><br>
+		<div class="contenedor2">	
+			<div class="centrar"><h3>Configuraciones</h3></div>
+			<br>
+			<input type="text" class="form-control" placeholder="Usuario" id="usuario"/>
+			<select id="sexo" class="form-control">
+				<option value="">Sexo</option>
+				<option value="Masculino">Masculino</option>
+				<option value="Femenino">Femenino</option>
+			</select>
+			<br><br>
+			<div class="centrar">
+				<button class="btn btn-primary" id="btn-configurar">ENVIAR</button>
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script  type="text/javascript" language="javascript">
+			document.addEventListener("deviceready", onDeviceReady, false);
+			
+			function ajax(url,data,done,error){
+	            $.ajax({
+	                url: url,
+	                context : document.body,
+	                dataType: "json",
+	                type: "POST",
+	                data: data
+	            }).done(done).error(error);
+	        }
+			
+			function onDeviceReady(){
+				$( "#home" ).on( "click", function(){window.location.assign("index.html");});
+				$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
+				$( "#myfeed" ).on( "click", function(){window.location.assign("posts.html");});
+			}
+		</script>
+	</body>
+</html>

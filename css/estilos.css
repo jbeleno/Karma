@@ -1,0 +1,246 @@
+@font-face
+{
+    font-family: RobotoDraft;
+    src: url('../fonts/Roboto-Regular.ttf'); /* IE9 */
+}
+
+html, body{
+   font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
+	padding:0px;
+	margin:0px;
+	background-color: #dddddd;
+}
+
+.form-control{
+	display: block;
+	width: 100%;
+	padding: 6px 12px;
+	font-size: 18px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin: 15px 0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.navbar{
+	background: #009688;
+	color: white;
+	height: 60px;
+	position: fixed;
+	width: 100%;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	top:0px;
+	right: 0px;
+}
+
+.icono{
+	float: right;
+	width: 32px;
+	height: 32px;
+	padding: 10px;
+	margin: 5px;
+}
+
+.logo{
+	width: 32px;
+	height: 32px;
+	padding: 10px;
+	margin: 5px;
+	margin-left: 10px;
+}
+
+.btn-escribir{
+	width: 24px;
+	height: 24px;
+	position: fixed;
+	bottom: 12px;
+	right: 12px;
+	padding: 16px;
+	background-color: #009688;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	box-shadow: 0 1px 6px rgba(0,0,0,.12),0 1px 6px rgba(0,0,0,.12);
+}
+
+.btn-escribir:hover, .btn-escribir:focus, .btn-escribir:active{
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+	background-color: #00695C;
+}
+
+.post{
+	background-color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin: 10px;
+	padding: 0px;
+}
+
+hr{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 1px solid #eee;
+}
+
+.action-icon{
+	width: 32px;
+	height: 32px;
+}
+
+.post-footer{
+	background-color: #eeeeee;
+	-webkit-border-bottom-right-radius: 2px;
+	-webkit-border-bottom-left-radius: 2px;
+	-moz-border-radius-bottomright: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+	padding: 5px 20px;
+}
+
+.header-post{
+	display: block;
+}
+
+.content-post{
+	padding: 20px 10px;
+	font-size: 20px;
+}
+
+.right{
+	float: right;
+}
+
+.enlinea{
+	display: inline-block;
+}
+
+.centrar-v{
+	vertical-align: super;
+}
+
+.comentarios{
+	padding: 20px 10px;
+	font-size: 18px;
+}
+
+.user-icon{
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	padding: 5px;
+	margin-right: 10px;
+}
+
+.user-hombre{
+	background-color: #2196F3;
+}
+
+.user-mujer{
+	background-color: #E91E63;
+}
+
+.user-anonimo{
+	background-color: #4CAF50;
+}
+
+.subtitulo{
+	color: #AAAAAA;
+	font-size: 16px;
+}
+
+.centrar{
+	text-align: center;
+}
+
+.escribir{
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background-color: white;
+	border-top: 1px solid #cccccc;
+}
+
+.caja-escribir{
+	width: 75%;
+	margin: 5px;
+	padding: 5px;
+	color:#9E9E9E;
+}
+
+#btn-comentar{
+	width: 32px;
+	height: 32px;
+	padding: 5px;
+	vertical-align: bottom;
+}
+
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-ph)
+}
+
+.btn {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-image: none;
+	border: 1px solid transparent;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 0.9em;
+	width: 120px;
+}
+
+.btn-primary{
+	color: #fff;
+	background-color: #009688;
+	border-color: #009688;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.btn-primary:active,.btn-primary:focus,.btn-primary:hover{
+	color:#fff;
+	background-color:#00695C;
+	border-color:#00695C;
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+}
+
+.contenedor2{
+	margin: 10px;
+}
+
+.caja-settings{
+	background-color: white;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	margin: 10px;
+	padding: 5px;
+}

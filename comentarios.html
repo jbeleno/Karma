@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Karma</title>
+		<link href="css/estilos.css" rel="stylesheet">
+		 <meta name="viewport" id="viewport"
+     content="width=device-width, height=device-height,
+     initial-scale=1.0, maximum-scale=1.0,
+     user-scalable=no" />
+		<script src="phonegap.js"></script>
+	</head>
+	<body>
+		<div class="navbar">
+			<img src ="img/home.png" class="logo" id="home">
+			<img src ="img/gear.png" class="icono" id="settings">
+			<img src ="img/user.png" class="icono" id="myfeed">
+		</div>
+		<br><br><br><br>
+		<div class="contenido">	
+			<div class="post">
+				<div class="content-post">
+					<div class="header-post">
+						<img src="./img/hombre.png" class="user-icon user-hombre">
+						<strong class="centrar-v">Juancho</strong>
+					</div>
+					<hr>
+					<div>		
+						Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, ... O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão.
+					</div>
+					<div class="subtitulo">
+						<br>Hace 23 minutos
+					</div>
+				</div>
+				<div class="post-footer">
+					<div class="enlinea">
+						<strong class="centrar-v">250k</strong>
+						<img src="./img/gray_heart.png" class="action-icon">
+					</div>
+					<div class="enlinea right">
+						<strong class="centrar-v">550k</strong>
+						<img src="./img/comment.png" class="action-icon">
+					</div>
+				</div>
+				<div class="comentarios">
+					<div class="comentario">
+						<div class="content-comentario">
+							<img src="./img/hombre.png" class="user-icon user-hombre">
+							<div class="centrar-v enlinea">
+								Este es un ejemplo de un comentario.
+							</div>
+							<div class="subtitulo">
+								Juancho - Hace 20 minutos
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="comentario">
+						<div class="content-comentario">
+							<img src="./img/mujer.png" class="user-icon user-mujer">
+							<div class="centrar-v enlinea">
+								Este es un ejemplo de un comentario.
+							</div>
+							<div class="subtitulo">
+								Maria - Hace 2 horas
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br><br><br>
+		<div class="escribir">
+			<div class="caja-escribir enlinea" contenteditable="true" data-ph="Escribe un comentario..."></div>
+			<img src="./img/enviar.png" id="btn-comentar">
+		</div>
+		<script src="js/jquery.js"></script>
+		<script  type="text/javascript" language="javascript">
+			document.addEventListener("deviceready", onDeviceReady, false);
+			
+			function ajax(url,data,done,error){
+	            $.ajax({
+	                url: url,
+	                context : document.body,
+	                dataType: "json",
+	                type: "POST",
+	                data: data
+	            }).done(done).error(error);
+	        }
+
+			function onDeviceReady(){
+				$( "#home" ).on( "click", function(){window.location.assign("index.html");});
+				$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
+				$( "#myfeed" ).on( "click", function(){window.location.assign("posts.html");});
+			}
+		</script>
+	</body>
+</html>

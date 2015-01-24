@@ -11,6 +11,10 @@ html, body{
 	background-color: #dddddd;
 }
 
+a{
+	text-decoration:none;
+}
+
 .form-control{
 	display: block;
 	width: 100%;
@@ -243,4 +247,16 @@ hr{
 	border-radius: 2px;
 	margin: 10px;
 	padding: 5px;
+}
+
+.texto-verde{
+	color: #009688;
+}
+
+.cerrar{
+	width: 24px;
+	height: 24px;
+	padding: 5px;
+	float: right;
+	margin-top: -5px;
 }

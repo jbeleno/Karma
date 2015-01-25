@@ -260,3 +260,12 @@ hr{
 	float: right;
 	margin-top: -5px;
 }
+
+.mini-like{
+	width: 16px;
+	height: 16px;
+}
+
+.enlinea2{
+	display: inline;
+}

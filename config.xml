@@ -4,10 +4,10 @@
         id          = "com.phonegap.karma"
         version     = "1.0.0" >
 
-    <name>Karma</name>
+    <name>CrowdConfession</name>
 
     <description>
-        Esta aplicación te permite revelar tus pensamientos y opiniones anonimamente. 
+        Esta aplicación te permite revelar tus pensamientos y opiniones anónimamente. (Confesionario Virtual) 
     </description>
 
     <author href="https://build.phonegap.com" email="jsbeleno@gmail.com">

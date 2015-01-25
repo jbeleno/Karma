@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Karma</title>
+		<title>CrowdConfession</title>
 		<link href="css/estilos.css" rel="stylesheet">
 		 <meta name="viewport" id="viewport"
      content="width=device-width, height=device-height,
@@ -18,7 +18,7 @@
 		</div>
 		<br><br><br><br>
 		<div class="contenedor2">	
-			<textarea class="form-control" placeholder="Yo confieso que..." rows="5">Yo confieso que...</textarea>
+			<textarea class="form-control" placeholder="Yo confieso que..." rows="5" id="confesion">Yo confieso que...</textarea>
 			<br>
 			<div class="centrar">
 				<button class="btn btn-primary" id="btn-publicar">PUBLICAR</button>
@@ -37,11 +37,49 @@
 	                data: data
 	            }).done(done).error(error);
 	        }
+
+	        function publicar(){
+	        	ajax(
+		        	base_url+'karma/post/create',
+		        	{
+		        		'user': localStorage.user,
+		        		'confession' : $("#confesion").val()
+		        	},
+		        	function(data){
+		        		if(data.res == 'ok'){
+		        			navigator.notification.alert(
+							    'Confesión publicada.',  // message
+							    null,
+							    'Información', // title
+							    'OK' // buttonName
+							);
+							window.location.assign("./posts.html");
+		        		}else{
+		        			navigator.notification.alert(
+							    data.msj,  // message
+							    null,
+							    'Error', // title
+							    'OK' // buttonName
+							);
+		        		}
+		        	},
+		        	function(error){
+		        		navigator.notification.alert(
+						    '¡Wow! un error inesperado ha ocurrido, por favor intentalo de nuevo.',  // message
+						    null,
+						    'Error', // title
+						    'OK' // buttonName
+						);
+		        	}
+	        	);
+	        }
 			
 			function onDeviceReady(){
-				$( "#home" ).on( "click", function(){window.location.assign("index.html");});
-				$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
-				$( "#myfeed" ).on( "click", function(){window.location.assign("posts.html");});
+				$( "#home" ).on( "click", function(){window.location.assign("./index.html");});
+				$( "#settings" ).on( "click", function(){window.location.assign("./configurar.html");});
+				$( "#myfeed" ).on( "click", function(){window.location.assign("./posts.html");});
+
+				$( "#btn-publicar" ).on( "click", publicar);
 			}
 		</script>
 	</body>

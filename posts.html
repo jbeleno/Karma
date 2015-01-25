@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Karma</title>
+		<title>CrowdConfession</title>
 		<link href="css/estilos.css" rel="stylesheet">
 		 <meta name="viewport" id="viewport"
      content="width=device-width, height=device-height,
@@ -16,90 +16,13 @@
 			<img src ="img/gear.png" class="icono" id="settings">
 			<img src ="img/user.png" class="icono" id="myfeed">		
 		</div>
-		<img src ="img/add.png" class="btn-escribir">
 		<br><br><br><br>
-		<div class="contenido">	
-			<div class="post">
-				<div class="content-post">
-					<div class="header-post">
-						<img src="./img/hombre.png" class="user-icon user-hombre">
-						<strong class="centrar-v texto-verde">Juancho</strong>
-						<img src="./img/close.png" class="cerrar">
-					</div>
-					<hr>
-					<div>		
-						Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, ... O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão.
-					</div>
-					<div class="subtitulo">
-						<br>Hace 23 minutos
-					</div>
-				</div>
-				<div class="post-footer">
-					<div class="enlinea">
-						<strong class="centrar-v">250k</strong>
-						<img src="./img/gray_heart.png" class="action-icon">
-					</div>
-					<div class="enlinea right">
-						<strong class="centrar-v">550k</strong>
-						<img src="./img/comment.png" class="action-icon">
-					</div>
-				</div>
-			</div>
-			<div class="post">
-				<div class="content-post">
-					<div class="header-post">
-						<img src="./img/hombre.png" class="user-icon user-hombre">
-						<strong class="centrar-v texto-verde">Juancho</strong>
-						<img src="./img/close.png" class="cerrar">
-					</div>
-					<hr>
-					<div>		
-						Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, ... O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão.
-					</div>
-					<div class="subtitulo">
-						<br>Hace 23 minutos
-					</div>
-				</div>
-				<div class="post-footer">
-					<div class="enlinea">
-						<strong class="centrar-v">250k</strong>
-						<img src="./img/gray_heart.png" class="action-icon">
-					</div>
-					<div class="enlinea right">
-						<strong class="centrar-v">550k</strong>
-						<img src="./img/comment.png" class="action-icon">
-					</div>
-				</div>
-			</div>
-			<div class="post">
-				<div class="content-post">
-					<div class="header-post">
-						<img src="./img/hombre.png" class="user-icon user-hombre">
-						<strong class="centrar-v texto-verde">Juancho</strong>
-						<img src="./img/close.png" class="cerrar">
-					</div>
-					<hr>
-					<div>		
-						Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, ... O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão.
-					</div>
-					<div class="subtitulo">
-						<br>Hace 23 minutos
-					</div>
-				</div>
-				<div class="post-footer">
-					<div class="enlinea">
-						<strong class="centrar-v">250k</strong>
-						<img src="./img/gray_heart.png" class="action-icon">
-					</div>
-					<div class="enlinea right">
-						<strong class="centrar-v">550k</strong>
-						<img src="./img/comment.png" class="action-icon">
-					</div>
-				</div>
-			</div>
+		<div class="contenido">
 		</div>
 		<script src="js/jquery.js"></script>
 		<script  type="text/javascript" language="javascript">
+			var lastpost; 
+
 			document.addEventListener("deviceready", onDeviceReady, false);
 			
 			function ajax(url,data,done,error){
@@ -111,11 +34,107 @@
 	                data: data
 	            }).done(done).error(error);
 	        }
+
+	        function like(id-post){
+	        	ajax(
+		        	base_url+'karma/post/like',
+		        	{
+		        		'user': localStorage.usuario,
+		        		'post' : id-post
+		        	},
+		        	function(data){
+		        		if(data.res == 'ok'){
+		        			if(data.like)
+		        				$("#heart-"+id-post).attr("src", "./img/red_heart.png");
+		        			else
+		        				$("#heart-"+id-post).attr("src", "./img/gray_heart.png");
+		        		}else{
+		        			navigator.notification.alert(
+							    '¡Wow! un error inesperado ha ocurrido, por favor intenta cargar de nuevo.',  // message
+							    null,
+							    'Error', // title
+							    'OK' // buttonName
+							);
+		        		}
+		        	},
+		        	function(error){
+		        		navigator.notification.alert(
+						    '¡Wow! un error inesperado ha ocurrido, por favor intenta cargar de nuevo.',  // message
+						    null,
+						    'Error', // title
+						    'OK' // buttonName
+						);
+		        	}
+	        	);
+	        }
+
+	        function setPost(id-post){
+	        	localStorage.post = id-post;
+	        	$( "#home" ).on( "click", function(){window.location.assign("./comentarios.html");});
+	        }
+
+	        function cargar_myfeed(){
+	        	ajax(
+		        	base_url+'karma/post/me',
+		        	{
+		        		user: localStorage.user,
+		        		post:lastpost
+		        	},
+		        	function(data){
+		        		if(data.res == 'ok'){
+		        			var content = '';
+		        			for(var i = 0; i < data.feed.length; i++){
+		        				content += '<div class="post">';
+								content += '<div class="content-post">';
+								content += '<div class="header-post">';
+								content += '<img src="./img/user.png" class="user-icon user-anonimo">';
+								content += '<strong class="centrar-v texto-verde">'+data.feed[i].user.name+'</strong>';
+								content += '</div>';
+								content += '<hr>';
+								content += '<div onclick="setPost('+data.feed[i].id+')">';	
+								content += data.feed[i].message;
+								content += '</div>';
+								content += '<div class="subtitulo">';
+								content += '<br>'+data.feed[i].fecha;
+								content += '</div>';
+								content += '</div>';
+								content += '<div class="post-footer">';
+								content += '<div class="enlinea">';
+								content += '<strong class="centrar-v">'+data.feed[i].likes+'</strong>';
+								if(data.feed[i].like)
+									content += '<img onclick="like('+data.feed[i].id+')" id="heart-'+data.feed[i].id+'" src="./img/red_heart.png" class="action-icon">';
+								else
+									content += '<img onclick="like('+data.feed[i].id+')" id="heart-'+data.feed[i].id+'" src="./img/gray_heart.png" class="action-icon">';
+								content += '</div>';
+								content += '<div class="enlinea right" onclick="setPost('+data.feed[i].id+')">';
+								content += '<strong class="centrar-v">'+data.feed[i].comments+'</strong>';
+								content += '<img src="./img/comment.png" class="action-icon">';
+								content += '</div>';
+								content += '</div>';
+								content += '</div>';
+		        			}
+		        			if(lastpost)$(".contenido").append(content);
+		        			else $(".contenido").html(content);
+
+		        			if(data.feed.length > 0) lastpost = data.feed[data.feed.length - 1].id;
+		        		}
+		        	},
+		        	function(error){
+		        		var content = '<div class="post centrar">';
+		        		content += '<h3>¡Ups!, Houston tenemos un problema, al parecer tu conexión a internet está fallando.</h3><br>';
+						content += '<a href="./index.html" class="btn btn-primary">RECARGAR</a>';
+		        		content += '</div>';
+		        		$(".contenido").html(content);
+		        	}
+	        	);
+	        }
 			
 			function onDeviceReady(){
-				$( "#home" ).on( "click", function(){window.location.assign("index.html");});
-				$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
-				$( "#myfeed" ).on( "click", function(){window.location.assign("posts.html");});
+				$( "#home" ).on( "click", function(){window.location.assign("./index.html");});
+				$( "#settings" ).on( "click", function(){window.location.assign("./configurar.html");});
+				$( "#myfeed" ).on( "click", function(){window.location.assign("./posts.html");});
+
+				cargar_myfeed();
 			}
 		</script>
 	</body>

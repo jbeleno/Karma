@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Karma</title>
+		<title>CrowdConfession</title>
 		<link href="css/estilos.css" rel="stylesheet">
 		 <meta name="viewport" id="viewport"
      content="width=device-width, height=device-height,
@@ -22,13 +22,13 @@
 			<br>
 			<input type="text" class="form-control" placeholder="Usuario" id="usuario"/>
 			<select id="sexo" class="form-control">
-				<option value="">Sexo</option>
+				<option value="Desconocido">Sexo</option>
 				<option value="Masculino">Masculino</option>
 				<option value="Femenino">Femenino</option>
 			</select>
 			<br><br>
 			<div class="centrar">
-				<button class="btn btn-primary" id="btn-configurar">ENVIAR</button>
+				<button class="btn btn-primary" id="btn-configurar">GUARDAR</button>
 			</div>
 		</div>
 		<script src="js/jquery.js"></script>
@@ -44,11 +44,52 @@
 	                data: data
 	            }).done(done).error(error);
 	        }
+
+	        function configurar(){
+	        	ajax(
+		        	base_url+'karma/user/update',
+		        	{
+		        		'user': localStorage.user,
+		        		'name' : $("#usuario").val(),
+		        		'sex' : $("#sexo").val()
+		        	},
+		        	function(data){
+		        		if(data.res == 'ok'){
+		        			localStorage.name = $("#usuario").val(); 
+		        			localStorage.sex = $("#sexo").val();  
+		        		}else{
+		        			navigator.notification.alert(
+							    data.msj,  // message
+							    null,
+							    'Error', // title
+							    'OK' // buttonName
+							);
+		        		}
+		        	},
+		        	function(error){
+		        		navigator.notification.alert(
+						    '¡Wow! un error inesperado ha ocurrido, por favor intentalo de nuevo.',  // message
+						    null,
+						    'Error', // title
+						    'OK' // buttonName
+						);
+		        	}
+	        	);
+	        }
+
+	        function cargar_usuario(){
+	        	if(localStorage.name) $("#usuario").val(localStorage.name);
+	        	if(localStorage.sex) $("#sexo").val(localStorage.sex);
+	        }
 			
 			function onDeviceReady(){
-				$( "#home" ).on( "click", function(){window.location.assign("index.html");});
-				$( "#settings" ).on( "click", function(){window.location.assign("configurar.html");});
-				$( "#myfeed" ).on( "click", function(){window.location.assign("posts.html");});
+				$( "#home" ).on( "click", function(){window.location.assign("./index.html");});
+				$( "#settings" ).on( "click", function(){window.location.assign("./configurar.html");});
+				$( "#myfeed" ).on( "click", function(){window.location.assign("./posts.html");});
+
+				cargar_usuario();
+
+				$( "#btn-configurar" ).on( "click", configurar);
 			}
 		</script>
 	</body>

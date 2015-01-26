@@ -94,19 +94,19 @@
 	        	);
 	        }
 
-	        function like(id-post){
+	        function like(idpost){
 	        	ajax(
 		        	base_url+'karma/post/like',
 		        	{
 		        		'user': localStorage.usuario,
-		        		'post' : id-post
+		        		'post' : idpost
 		        	},
 		        	function(data){
 		        		if(data.res == 'ok'){
 		        			if(data.like)
-		        				$("#heart-"+id-post).attr("src", "./img/red_heart.png");
+		        				$("#heart-"+idpost).attr("src", "./img/red_heart.png");
 		        			else
-		        				$("#heart-"+id-post).attr("src", "./img/gray_heart.png");
+		        				$("#heart-"+idpost).attr("src", "./img/gray_heart.png");
 		        		}else{
 		        			navigator.notification.alert(
 							    '¡Wow! un error inesperado ha ocurrido, por favor intenta cargar de nuevo.',  // message

@@ -68,6 +68,38 @@
 	        	);
 	        }
 
+	        function eliminar(idpost){
+	        	if(confirm('¿Deseas eliminar esta publicación?')){
+	        		ajax(
+			        	base_url+'karma/post/delete',
+			        	{
+			        		'user': localStorage.usuario,
+			        		'post' : idpost
+			        	},
+			        	function(data){
+			        		if(data.res == 'ok'){
+			        			window.location.assign("./posts.html");
+			        		}else{
+			        			navigator.notification.alert(
+								    '¡Wow! un error inesperado ha ocurrido, por favor intenta eliminar de nuevo.',  // message
+								    null,
+								    'Error', // title
+								    'OK' // buttonName
+								);
+			        		}
+			        	},
+			        	function(error){
+			        		navigator.notification.alert(
+							    '¡Wow! un error inesperado ha ocurrido, por favor intenta cargar de nuevo esta vista.',  // message
+							    null,
+							    'Error', // title
+							    'OK' // buttonName
+							);
+			        	}
+		        	);
+	        	}	        	
+	        }
+
 	        function setPost(idpost){
 	        	localStorage.post = idpost;
 	        	$( "#home" ).on( "click", function(){window.location.assign("./comentarios.html");});
@@ -89,6 +121,7 @@
 								content += '<div class="header-post">';
 								content += '<img src="./img/user.png" class="user-icon user-anonimo">';
 								content += '<strong class="centrar-v texto-verde">'+data.feed[i].user.name+'</strong>';
+								content += '<img src="./img/close.png" class="cerrar" onclick="eliminar('+data.feed[i].id+')">';
 								content += '</div>';
 								content += '<hr>';
 								content += '<div onclick="setPost('+data.feed[i].id+')">';	

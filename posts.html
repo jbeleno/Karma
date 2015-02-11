@@ -119,7 +119,12 @@
 		        				content += '<div class="post">';
 								content += '<div class="content-post">';
 								content += '<div class="header-post">';
-								content += '<img src="./img/user.png" class="user-icon user-anonimo">';
+								if(data.feed[i].user.sex == "Mujer")
+									content += '<img src="./img/mujer.png" class="user-icon user-mujer">';
+								else if(data.feed[i].user.sex == "Hombre")
+									content += '<img src="./img/hombre.png" class="user-icon user-hombre">';
+								else
+									content += '<img src="./img/user.png" class="user-icon user-anonimo">';
 								content += '<strong class="centrar-v texto-verde">'+data.feed[i].user.name+'</strong>';
 								content += '<img src="./img/close.png" class="cerrar" onclick="eliminar('+data.feed[i].id+')">';
 								content += '</div>';

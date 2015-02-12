@@ -21,7 +21,7 @@
 			<div class="post">
 				<div class="content-post">
 					<div class="header-post">
-						<img id="sex-img" src="./img/user.png" class="user-icon user-anonimo">
+						<img id="sex-img" src="" class="user-icon">
 						<strong class="centrar-v" id="autor"></strong>
 					</div>
 					<hr>
@@ -135,10 +135,6 @@
 		        	},
 		        	function(data){
 		        		if(data.res == 'ok'){
-		        			$("sex-img").removeClass('user-hombre');
-		        			$("sex-img").removeClass('user-mujer');
-		        			$("sex-img").removeClass('user-anonimo');
-
 		        			if(data.post.user.sex == "Mujer") {
 		        				$("#sex-img").src("src", "./img/mujer.png");
 		        				$("sex-img").addClass('user-mujer');
@@ -149,6 +145,11 @@
 		        			}else{
 		        				$("#sex-img").src("src", "./img/user.png");
 		        				$("sex-img").addClass('user-anonimo');
+		        			}
+
+		        			if(data.post.user.isauthor == "si"){
+		        				$("#sex-img").src("src", "./img/autor.png");
+		        				$("sex-img").addClass('user-autor');
 		        			}
 
 		        			if(data.post.like)

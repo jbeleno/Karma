@@ -39,7 +39,7 @@
 	        	ajax(
 		        	base_url+'karma/post/like',
 		        	{
-		        		'user': localStorage.usuario,
+		        		'user': localStorage.user,
 		        		'post' : idpost
 		        	},
 		        	function(data){
@@ -73,7 +73,7 @@
 	        		ajax(
 			        	base_url+'karma/post/delete',
 			        	{
-			        		'user': localStorage.usuario,
+			        		'user': localStorage.user,
 			        		'post' : idpost
 			        	},
 			        	function(data){

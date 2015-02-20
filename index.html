@@ -48,7 +48,7 @@
 		        	},
 		        	function(data){
 		        		if(data.res == 'ok'){
-		        			localStorage.usuario = data.id;
+		        			localStorage.user = data.id;
 		        			cargar_feed();   
 		        		}
 		        	},
@@ -62,7 +62,7 @@
 	        	ajax(
 		        	base_url+'karma/post/like',
 		        	{
-		        		'user': localStorage.usuario,
+		        		'user': localStorage.user,
 		        		'post' : idpost
 		        	},
 		        	function(data){
@@ -160,7 +160,7 @@
 				$( "#myfeed" ).on( "click", function(){window.location.assign("./posts.html");});
 				$( ".btn-escribir" ).on( "click", function(){window.location.assign("publicar.html");});
 
-				if(!localStorage.usuario) registrar_usuario();
+				if(!localStorage.user) registrar_usuario();
 				else cargar_feed();
 			}
 		</script>

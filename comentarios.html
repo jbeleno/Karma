@@ -41,6 +41,9 @@
 					</div>
 				</div>
 				<div class="comentarios">
+				<br>
+				<p>Escribe el primer comentario :)</p>
+				<br>
 				</div>
 			</div>
 		</div>
@@ -135,11 +138,11 @@
 		        	},
 		        	function(data){
 		        		if(data.res == 'ok'){
-		        			if(data.post.user.sex == "Mujer") {
+		        			if(data.feed[0].user.sex == "Mujer") {
 		        				$("#sex-img").src("src", "./img/mujer.png");
 		        				$("sex-img").addClass('user-mujer');
 		        			}
-		        			else if(data.post.user.sex == "Hombre"){
+		        			else if(data.feed[0].user.sex == "Hombre"){
 		        				$("#sex-img").src("src", "./img/hombre.png");
 		        				$("sex-img").addClass('user-hombre');
 		        			}else{
@@ -147,41 +150,41 @@
 		        				$("sex-img").addClass('user-anonimo');
 		        			}
 
-		        			if(data.post.user.isauthor == "si"){
+		        			if(data.post.feed[0].isauthor == "si"){
 		        				$("#sex-img").src("src", "./img/autor.png");
 		        				$("sex-img").addClass('user-autor');
 		        			}
 
-		        			if(data.post.like)
+		        			if(data.feed[0].like)
 		        				$("#likes").attr("src","./img/red_heart.png");
 		        			else
 		        				$("#likes").attr("src","./img/gray_heart.png");
 
-		        			$("#autor").html(data.post.user.name);
-		        			$("#post-content").html(data.post.message);
-		        			$("#tiempo").html(data.post.fecha);
-		        			$("#nlikes").html(data.post.nlikes);
-		        			$("#ncomments").html(data.post.ncomments);
+		        			$("#autor").html(data.feed[0].user.name);
+		        			$("#post-content").html(data.feed[0].confession);
+		        			$("#tiempo").html(data.feed[0].date);
+		        			$("#nlikes").html(data.feed[0].likes);
+		        			$("#ncomments").html(data.feed[0].comments.length);
 
 		        			var content = '';
-		        			for(var i = 0; i< data.post.comments.length; i++){
+		        			for(var i = 0; i< data.feed[0].comments.length; i++){
 		        				content += '<div class="comentario">';
 								content += '<div class="content-comentario">';
-								if(data.post.comments[i].user.sex == "Hombre")
+								if(data.feed[0].comments[i].user.sex == "Hombre")
 									content += '<img src="./img/hombre.png" class="user-icon user-hombre enlinea">';
-								else if(data.post.comments[i].user.sex == "Mujer")
+								else if(data.feed[0].comments[i].user.sex == "Mujer")
 									content += '<img src="./img/mujer.png" class="user-icon user-mujer enlinea">';
 								else 
 									content += '<img src="./img/user.png" class="user-icon user-anonimo enlinea">';
 								content += '<div class="centrar-v enlinea2">';
-								content += data.post.comments[i].message;
+								content += data.feed[0].comments[i].comment;
 								content += '</div>';
 								content += '<div class="subtitulo">';
-								content += data.post.comments[i].user.name+' - '+data.post.comments[i].fecha;
-								if(data.post.comments[i].like)
-									content += '<img src="./img/red_heart.png" id="heart-'+data.post.comments[i].id+'" onclick="like('+data.post.comments[i].id+')" class="mini-like right">';
+								content += data.feed[0].comments[i].user.name+' - '+data.feed[0].comments[i].date;
+								if(data.feed[0].comments[i].like)
+									content += '<img src="./img/red_heart.png" id="heart-'+data.feed[0].comments[i].id+'" onclick="like('+data.feed[0].comments[i].id+')" class="mini-like right">';
 								else
-									content += '<img src="./img/gray_heart.png" id="heart-'+data.post.comments[i].id+'" onclick="like('+data.post.comments[i].id+')" class="mini-like right">';
+									content += '<img src="./img/gray_heart.png" id="heart-'+data.feed[0].comments[i].id+'" onclick="like('+data.feed[0].comments[i].id+')" class="mini-like right">';
 								content += '</div>';
 								content += '</div>';
 								content += '</div>';

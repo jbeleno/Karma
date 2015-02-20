@@ -56,7 +56,13 @@
 		        	function(data){
 		        		if(data.res == 'ok'){
 		        			localStorage.name = $("#usuario").val(); 
-		        			localStorage.sex = $("#sexo").val();  
+		        			localStorage.sex = $("#sexo").val(); 
+		        			navigator.notification.alert(
+							    'Datos del usuario guardados correctamente',  // message
+							    null,
+							    'Información', // title
+							    'OK' // buttonName
+							);
 		        		}else{
 		        			navigator.notification.alert(
 							    data.msj,  // message

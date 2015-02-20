@@ -93,7 +93,7 @@
 
 	        function setPost(idpost){
 	        	localStorage.post = idpost;
-	        	$( "#home" ).on( "click", function(){window.location.assign("./comentarios.html");});
+	        	window.location.assign("./comentarios.html");
 	        }
 
 	        function cargar_feed(){
@@ -117,22 +117,22 @@
 								content += '</div>';
 								content += '<hr>';
 								content += '<div onclick="setPost('+data.feed[i].id+')">';	
-								content += data.feed[i].message;
+								content += data.feed[i].confession;
 								content += '</div>';
 								content += '<div class="subtitulo">';
-								content += '<br>'+data.feed[i].fecha;
+								content += '<br>'+data.feed[i].date;
 								content += '</div>';
 								content += '</div>';
 								content += '<div class="post-footer">';
 								content += '<div class="enlinea">';
-								content += '<strong class="centrar-v">'+data.feed[i].likes+'</strong>';
+								content += '<strong class="centrar-v"> '+data.feed[i].likes+' </strong>';
 								if(data.feed[i].like)
 									content += '<img onclick="like('+data.feed[i].id+')" id="heart-'+data.feed[i].id+'" src="./img/red_heart.png" class="action-icon">';
 								else
 									content += '<img onclick="like('+data.feed[i].id+')" id="heart-'+data.feed[i].id+'" src="./img/gray_heart.png" class="action-icon">';
 								content += '</div>';
 								content += '<div class="enlinea right" onclick="setPost('+data.feed[i].id+')">';
-								content += '<strong class="centrar-v">'+data.feed[i].comments+'</strong>';
+								content += '<strong class="centrar-v"> '+data.feed[i].comments+' </strong>';
 								content += '<img src="./img/comment.png" class="action-icon">';
 								content += '</div>';
 								content += '</div>';

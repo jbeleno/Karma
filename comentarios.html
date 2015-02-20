@@ -138,11 +138,11 @@
 		        	},
 		        	function(data){
 		        		if(data.res == 'ok'){
-		        			if(data.feed[0].user.sex == "Mujer") {
+		        			if(data.feed[0].user.sex == "Femenino") {
 		        				$("#sex-img").src("src", "./img/mujer.png");
 		        				$("sex-img").addClass('user-mujer');
 		        			}
-		        			else if(data.feed[0].user.sex == "Hombre"){
+		        			else if(data.feed[0].user.sex == "Masculino"){
 		        				$("#sex-img").src("src", "./img/hombre.png");
 		        				$("sex-img").addClass('user-hombre');
 		        			}else{

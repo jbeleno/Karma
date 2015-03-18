@@ -141,14 +141,14 @@
 		        		$("#post-content").html(data);
 		        		if(data.res == 'ok'){
 		        			if(data.feed[0].user.sex == "Femenino") {
-		        				$("#sex-img").src("src", "./img/mujer.png");
+		        				$("#sex-img").attr("src", "./img/mujer.png");
 		        				$("sex-img").addClass('user-mujer');
 		        			}
 		        			else if(data.feed[0].user.sex == "Masculino"){
-		        				$("#sex-img").src("src", "./img/hombre.png");
+		        				$("#sex-img").attr("src", "./img/hombre.png");
 		        				$("sex-img").addClass('user-hombre');
 		        			}else{
-		        				$("#sex-img").src("src", "./img/user.png");
+		        				$("#sex-img").attr("src", "./img/user.png");
 		        				$("sex-img").addClass('user-anonimo');
 		        			}
 

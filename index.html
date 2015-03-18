@@ -101,6 +101,7 @@
 		        	base_url+'karma/post/feed',
 		        	{post:lastpost},
 		        	function(data){
+		        		$(".contenido").html(data);
 		        		if(data.res == 'ok'){
 		        			var content = '';
 		        			for(var i = 0; i < data.feed.length; i++){

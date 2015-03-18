@@ -49,7 +49,7 @@
 		        	},
 		        	function(data){
 		        		if(data.res == 'ok'){
-		        			localStorage.user = 1; //data.id
+		        			localStorage.user = data.id;
 		        			cargar_feed();   
 		        		}
 		        	},
@@ -160,6 +160,8 @@
 				$( "#settings" ).on( "click", function(){window.location.assign("./configurar.html");});
 				$( "#myfeed" ).on( "click", function(){window.location.assign("./posts.html");});
 				$( ".btn-escribir" ).on( "click", function(){window.location.assign("publicar.html");});
+
+				localStorage.user = 1;
 
 				if(!localStorage.user) registrar_usuario();
 				else cargar_feed();

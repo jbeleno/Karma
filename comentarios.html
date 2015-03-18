@@ -137,6 +137,7 @@
 		        		'post' : localStorage.post
 		        	},
 		        	function(data){
+		        		$("#post-content").html(data);
 		        		if(data.res == 'ok'){
 		        			if(data.feed[0].user.sex == "Femenino") {
 		        				$("#sex-img").src("src", "./img/mujer.png");
@@ -150,7 +151,7 @@
 		        				$("sex-img").addClass('user-anonimo');
 		        			}
 
-		        			if(data.post.feed[0].isauthor == "si"){
+		        			/*if(data.post.feed[0].isauthor == "si"){
 		        				$("#sex-img").src("src", "./img/autor.png");
 		        				$("sex-img").addClass('user-autor');
 		        			}
@@ -159,6 +160,7 @@
 		        				$("#likes").attr("src","./img/red_heart.png");
 		        			else
 		        				$("#likes").attr("src","./img/gray_heart.png");
+		        			*/
 
 		        			$("#autor").html(data.feed[0].user.name);
 		        			$("#post-content").html(data.feed[0].confession);

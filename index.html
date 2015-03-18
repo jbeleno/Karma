@@ -24,6 +24,7 @@
 		<script src="js/jquery.js"></script>
 		<script  type="text/javascript" language="javascript">
 			var lastpost;
+			var base_url = "http://54.173.210.190/";
 
 			document.addEventListener("deviceready", onDeviceReady, false);
 			
@@ -101,7 +102,6 @@
 		        	base_url+'karma/post/feed',
 		        	{post:lastpost},
 		        	function(data){
-		        		$(".contenido").html(data);
 		        		if(data.res == 'ok'){
 		        			var content = '';
 		        			for(var i = 0; i < data.feed.length; i++){

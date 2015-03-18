@@ -142,19 +142,19 @@
 		        		if(data.res == 'ok'){
 		        			if(data.feed[0].user.sex == "Femenino") {
 		        				$("#sex-img").attr("src", "./img/mujer.png");
-		        				$("sex-img").addClass('user-mujer');
+		        				$("#sex-img").addClass('user-mujer');
 		        			}
 		        			else if(data.feed[0].user.sex == "Masculino"){
 		        				$("#sex-img").attr("src", "./img/hombre.png");
-		        				$("sex-img").addClass('user-hombre');
+		        				$("#sex-img").addClass('user-hombre');
 		        			}else{
 		        				$("#sex-img").attr("src", "./img/user.png");
-		        				$("sex-img").addClass('user-anonimo');
+		        				$("#sex-img").addClass('user-anonimo');
 		        			}
 
 		        			/*if(data.post.feed[0].isauthor == "si"){
 		        				$("#sex-img").src("src", "./img/autor.png");
-		        				$("sex-img").addClass('user-autor');
+		        				$("#sex-img").addClass('user-autor');
 		        			}
 
 		        			if(data.feed[0].like)
@@ -193,7 +193,7 @@
 								content += '</div>';
 								content += '<hr>';
 		        			}
-		        			$("#comentarios").html(content);
+		        			$(".comentarios").html(content);
 		        		}else{
 		        			navigator.notification.alert(
 							    data.msj,  // message
